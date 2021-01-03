@@ -9,15 +9,15 @@ public class Distributeur implements Boisson {
     }
 
     @Override
-    public int checkPayement(int boisson) {
+    public int checkPayement(Breuvage boisson) {
         double cost = 0;
         System.out.println("Ma boisson " + boisson);
-        if(boisson != CAFE && boisson != THE) return -1;
+        if(boisson != Breuvage.CAFE && boisson != Breuvage.THE) return -1;
         System.out.println("Prix = " + cost);
-        if(boisson == THE)
+        if(boisson == Breuvage.THE)
             cost = the;
         System.out.println("Prix = " + cost);
-        if(boisson == CAFE)
+        if(boisson == Breuvage.CAFE)
             cost = cafe;
         System.out.println("Prix = " + cost);
         if(somme - cost < 0)return -1;
@@ -38,12 +38,12 @@ public class Distributeur implements Boisson {
                 introductionPiece();
                 break;
             case "2":
-                int b = choisirBoisson();
-                if(b == -1)break;
+            	Breuvage b = choisirBoisson();
+                if(b == Breuvage.ERROR)break;
                 if(checkPayement(b) == -1)break;
                 // Dire quelle boisson
-                if(b==1)System.out.println("Vous avez choisi un café");
-                if(b==2)System.out.println("Vous avez choisi un thé");
+                if(b==Breuvage.CAFE)System.out.println("Vous avez choisi un café");
+                if(b==Breuvage.THE)System.out.println("Vous avez choisi un thé");
                 double m = rendreMonnaie();
                 System.out.println(m + "€ a été rendu");
                 break;
@@ -58,7 +58,7 @@ public class Distributeur implements Boisson {
     }
 
     @Override
-    public int choisirBoisson() {
+    public Breuvage choisirBoisson() {
         clearScreen();
         System.out.println("Choisissez une boisson:");
         System.out.println("\t1) Prendre du café (1.50€)");
@@ -68,11 +68,11 @@ public class Distributeur implements Boisson {
         String choix = sc.next();
         switch (choix) {
             case "2":
-                return THE;
+                return Breuvage.THE;
             case "1":
-                return CAFE;
+                return Breuvage.CAFE;
             default:
-                return -1;
+                return Breuvage.ERROR;
         }
     }
 
@@ -85,10 +85,10 @@ public class Distributeur implements Boisson {
         String choix = sc.next();
         switch (choix) {
             case "1":
-                somme += 0.5;
+                ajouterPiece(0.5);
                 break;
             case "2":
-                somme += 1;
+            	ajouterPiece(1.0);
                 break;
             default:
                 break;
@@ -96,6 +96,10 @@ public class Distributeur implements Boisson {
         clearScreen();
     }
 
+   public void ajouterPiece(double p) {
+	   somme += p;
+   }
+   
     @Override
     public double rendreMonnaie() {
         double rendre = somme;
