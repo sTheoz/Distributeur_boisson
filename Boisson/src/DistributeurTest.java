@@ -3,7 +3,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
@@ -31,7 +30,7 @@ class DistributeurTest{
 
 	@Test
 	void testChoisirAction() {
-		failed("Pas bon");
+		fail("Pas bon");
 		Distributeur d = new Distributeur();
 		InputStream sysInBackup = System.in;
         ByteArrayInputStream in = new ByteArrayInputStream("1".getBytes());
