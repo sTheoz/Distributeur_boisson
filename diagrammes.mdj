@@ -803,6 +803,7 @@
 									"model": {
 										"$ref": "AAAAAAF2voFCnemMojE="
 									},
+									"visible": false,
 									"font": "Arial;13;0",
 									"left": 88,
 									"top": 304,
@@ -813,8 +814,7 @@
 									"hostEdge": {
 										"$ref": "AAAAAAF2voFCnemNaDo="
 									},
-									"edgePosition": 1,
-									"text": "Reset"
+									"edgePosition": 1
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -1670,17 +1670,7 @@
 							},
 							"target": {
 								"$ref": "AAAAAAF2vnjpFOeAoE8="
-							},
-							"triggers": [
-								{
-									"_type": "UMLEvent",
-									"_id": "AAAAAAF2x+eUmsfcPxo=",
-									"_parent": {
-										"$ref": "AAAAAAF2voFCnemMojE="
-									},
-									"name": "Reset"
-								}
-							]
+							}
 						},
 						{
 							"_type": "UMLTransition",
